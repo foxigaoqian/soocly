@@ -1,0 +1,530 @@
+{
+  "schema_version": "1.0",
+  "title": "Soocly Prep EPA 608 Seed Questions",
+  "created_at": "2026-08-24",
+  "language": "en-US",
+  "disclaimer": "Original draft practice items based on publicly available EPA Section 608 topics. These are not official EPA exam questions and must be reviewed by a qualified HVAC/EPA 608 subject-matter expert before publication.",
+  "default_review_status": "draft",
+  "questions": [
+    {
+      "id": "EPA608-CORE-001",
+      "exam": "epa-608",
+      "section": "core",
+      "topic": "environmental-impacts",
+      "difficulty": "easy",
+      "risk_level": "standard",
+      "question": "Which refrigerant class has an ozone depletion potential of zero because it contains neither chlorine nor bromine?",
+      "choices": [
+        {"key": "A", "text": "CFCs"},
+        {"key": "B", "text": "HCFCs"},
+        {"key": "C", "text": "HFCs"},
+        {"key": "D", "text": "Halons"}
+      ],
+      "correct_answer": "C",
+      "explanation": "HFC refrigerants contain hydrogen, fluorine, and carbon but no chlorine or bromine, so their ozone depletion potential is zero. Some HFCs can still have high global warming potential.",
+      "why_others_are_wrong": {
+        "A": "CFCs contain chlorine and can strongly deplete stratospheric ozone.",
+        "B": "HCFCs contain chlorine and have a lower, but nonzero, ozone depletion potential.",
+        "D": "Halons contain ozone-depleting halogens and are not an HFC refrigerant class."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Core topic: identification of CFC, HCFC, and HFC refrigerants and their relative ODP.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-CORE-002",
+      "exam": "epa-608",
+      "section": "core",
+      "topic": "three-rs",
+      "difficulty": "medium",
+      "risk_level": "standard",
+      "question": "Under EPA Section 608 terminology, what does it mean to reclaim refrigerant?",
+      "choices": [
+        {"key": "A", "text": "Remove refrigerant from an appliance and store it without processing"},
+        {"key": "B", "text": "Clean refrigerant for reuse in equipment owned by the same person without meeting reclamation specifications"},
+        {"key": "C", "text": "Reprocess refrigerant to the applicable purity specifications and verify the result using the prescribed analytical method"},
+        {"key": "D", "text": "Vent refrigerant after separating oil and moisture"}
+      ],
+      "correct_answer": "C",
+      "explanation": "Reclaiming means reprocessing recovered refrigerant to the applicable purity specifications in Appendix A to 40 CFR Part 82, Subpart F and verifying that it meets those specifications using the prescribed analytical methodology.",
+      "why_others_are_wrong": {
+        "A": "This describes recovery, not reclamation.",
+        "B": "This more closely describes recycling for reuse in equipment of the same owner.",
+        "D": "Intentional venting is generally prohibited and is not reclamation."
+      },
+      "source_url": "https://www.epa.gov/section608/recovering-recycling-and-reclaiming-refrigerants",
+      "source_note": "EPA definitions of recover, recycle, and reclaim.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-CORE-003",
+      "exam": "epa-608",
+      "section": "core",
+      "topic": "safety",
+      "difficulty": "easy",
+      "risk_level": "standard",
+      "question": "Which gas should a technician use instead of oxygen or compressed air when pressurizing a refrigeration system for leak detection?",
+      "choices": [
+        {"key": "A", "text": "Nitrogen used with a pressure regulator and relief valve"},
+        {"key": "B", "text": "Pure oxygen used without a regulator"},
+        {"key": "C", "text": "Compressed shop air"},
+        {"key": "D", "text": "Acetylene"}
+      ],
+      "correct_answer": "A",
+      "explanation": "EPA test topics specify nitrogen rather than oxygen or compressed air for leak detection. A pressure regulator and relief valve should be used with nitrogen.",
+      "why_others_are_wrong": {
+        "B": "Oxygen can react violently with oil and refrigerant under pressure.",
+        "C": "Compressed air can introduce oxygen and moisture and is not the specified leak-test gas.",
+        "D": "Acetylene is flammable and is not used to pressurize a refrigeration system for leak testing."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Core Safety topics: nitrogen rather than oxygen or compressed air; regulator and relief valve.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-CORE-004",
+      "exam": "epa-608",
+      "section": "core",
+      "topic": "safety",
+      "difficulty": "medium",
+      "risk_level": "high",
+      "question": "Why should a reusable refrigerant recovery cylinder not be filled beyond 80 percent of its capacity?",
+      "choices": [
+        {"key": "A", "text": "To leave room for liquid refrigerant to expand as temperature rises"},
+        {"key": "B", "text": "To make the cylinder easier to paint"},
+        {"key": "C", "text": "Because refrigerant becomes nonflammable below 80 percent"},
+        {"key": "D", "text": "Because DOT rules require the remaining space to be filled with oxygen"}
+      ],
+      "correct_answer": "A",
+      "explanation": "Liquid refrigerant expands as its temperature increases. Leaving adequate vapor space helps prevent dangerous hydrostatic pressure from developing inside the cylinder.",
+      "why_others_are_wrong": {
+        "B": "The fill limit is a safety requirement, not a cosmetic consideration.",
+        "C": "The 80 percent limit is not what determines refrigerant flammability.",
+        "D": "Oxygen must not be added to a recovery cylinder."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Core Safety topic: risks of filling cylinders more than 80 percent full.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-CORE-005",
+      "exam": "epa-608",
+      "section": "core",
+      "topic": "section-608-requirements",
+      "difficulty": "medium",
+      "risk_level": "standard",
+      "question": "Which activity generally makes a worker a technician who must hold the appropriate Section 608 certification?",
+      "choices": [
+        {"key": "A", "text": "Painting the exterior cabinet of an appliance"},
+        {"key": "B", "text": "Replacing insulation on an external pipe"},
+        {"key": "C", "text": "Attaching gauges to measure pressure inside the refrigerant circuit"},
+        {"key": "D", "text": "Tightening an exterior mounting bolt"}
+      ],
+      "correct_answer": "C",
+      "explanation": "Attaching or detaching hoses and gauges can violate the integrity of the refrigerant circuit and release refrigerant. EPA identifies this as technician activity requiring the appropriate certification, subject to limited exceptions such as supervised registered apprentices.",
+      "why_others_are_wrong": {
+        "A": "Painting the appliance does not normally open or disturb the refrigerant circuit.",
+        "B": "Replacing external insulation does not normally violate the integrity of the refrigerant circuit.",
+        "D": "Tightening an exterior bolt does not normally disturb the refrigerant circuit."
+      },
+      "source_url": "https://www.epa.gov/section608/section-608-technician-certification-requirements",
+      "source_note": "EPA definition of technician activities under Section 608.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T1-001",
+      "exam": "epa-608",
+      "section": "type-i",
+      "topic": "small-appliance-definition",
+      "difficulty": "easy",
+      "risk_level": "high",
+      "question": "Which description best matches EPA's definition of a small appliance?",
+      "choices": [
+        {"key": "A", "text": "Any appliance installed in a residence"},
+        {"key": "B", "text": "A product fully manufactured, charged, and hermetically sealed in a factory with five pounds or less of refrigerant"},
+        {"key": "C", "text": "Any system with a compressor smaller than five horsepower"},
+        {"key": "D", "text": "Any appliance that can be carried by one technician"}
+      ],
+      "correct_answer": "B",
+      "explanation": "EPA defines a small appliance as a listed type of product that is fully manufactured, charged, and hermetically sealed in a factory with five pounds or less of refrigerant.",
+      "why_others_are_wrong": {
+        "A": "Residential location alone does not determine whether an appliance is a small appliance.",
+        "C": "Compressor horsepower is not the defining criterion.",
+        "D": "Portability or weight is not the defining criterion."
+      },
+      "source_url": "https://www.epa.gov/section608/definitions-section-608-terms",
+      "source_note": "EPA definition of small appliance.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T1-002",
+      "exam": "epa-608",
+      "section": "type-i",
+      "topic": "system-dependent-recovery",
+      "difficulty": "medium",
+      "risk_level": "standard",
+      "question": "When using a system-dependent recovery device on a small appliance with an inoperative compressor, where should access valves generally be installed?",
+      "choices": [
+        {"key": "A", "text": "Only on the high side"},
+        {"key": "B", "text": "Only on the low side"},
+        {"key": "C", "text": "On both the high and low sides"},
+        {"key": "D", "text": "No access valves are needed under any circumstances"}
+      ],
+      "correct_answer": "C",
+      "explanation": "With an inoperative compressor, refrigerant may be trapped on either side of the system. EPA's Type I test topics identify the need to install both high- and low-side access valves for this recovery situation.",
+      "why_others_are_wrong": {
+        "A": "High-side access alone may leave refrigerant trapped on the low side.",
+        "B": "Low-side access alone may leave refrigerant trapped on the high side.",
+        "D": "Access to both sides is identified for this recovery scenario."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type I Recovery Techniques topic: both high- and low-side access with an inoperative compressor.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T1-003",
+      "exam": "epa-608",
+      "section": "type-i",
+      "topic": "system-dependent-recovery",
+      "difficulty": "easy",
+      "risk_level": "standard",
+      "question": "What should a technician do with a functional compressor while using a system-dependent recovery device on a small appliance?",
+      "choices": [
+        {"key": "A", "text": "Operate the compressor during recovery"},
+        {"key": "B", "text": "Disable the compressor and add oxygen"},
+        {"key": "C", "text": "Remove the compressor before recovery"},
+        {"key": "D", "text": "Heat the compressor with an open flame"}
+      ],
+      "correct_answer": "A",
+      "explanation": "EPA's Type I test topics specify operating a functional compressor when using a system-dependent, or passive, recovery device. The compressor helps move refrigerant through the system.",
+      "why_others_are_wrong": {
+        "B": "Oxygen must not be introduced into the refrigerant circuit.",
+        "C": "Removing the compressor before recovering refrigerant could release refrigerant.",
+        "D": "An open flame creates severe safety hazards and can decompose refrigerant."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type I Recovery Techniques topic: operate an operative compressor during system-dependent recovery.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T1-004",
+      "exam": "epa-608",
+      "section": "type-i",
+      "topic": "access-valves",
+      "difficulty": "medium",
+      "risk_level": "standard",
+      "question": "What should normally be done with a solderless piercing access fitting after service on a small appliance is complete?",
+      "choices": [
+        {"key": "A", "text": "Leave it permanently as the primary service valve"},
+        {"key": "B", "text": "Remove it and properly seal the system"},
+        {"key": "C", "text": "Loosen it so pressure can escape slowly"},
+        {"key": "D", "text": "Paint it yellow and gray"}
+      ],
+      "correct_answer": "B",
+      "explanation": "EPA's Type I test topics state that solderless access fittings should be removed at the conclusion of service. These temporary fittings can leak if left in place.",
+      "why_others_are_wrong": {
+        "A": "A temporary piercing fitting should not be treated as a permanent service valve.",
+        "C": "Intentionally releasing refrigerant is not an acceptable way to finish service.",
+        "D": "Yellow and gray are associated with recovery-cylinder identification, not access fittings."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type I Recovery Techniques topic: remove solderless access fittings after service.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T1-005",
+      "exam": "epa-608",
+      "section": "type-i",
+      "topic": "recovery-requirements",
+      "difficulty": "hard",
+      "risk_level": "high",
+      "question": "A technician is servicing a small appliance with a functional compressor using recovery equipment manufactured after November 15, 1993. What percentage of the refrigerant must be recovered if the percentage method is used?",
+      "choices": [
+        {"key": "A", "text": "50 percent"},
+        {"key": "B", "text": "70 percent"},
+        {"key": "C", "text": "80 percent"},
+        {"key": "D", "text": "90 percent"}
+      ],
+      "correct_answer": "D",
+      "explanation": "EPA currently states that technicians must recover 90 percent of the refrigerant when the small-appliance compressor is functional and the recovery or recycling equipment was manufactured after November 15, 1993. The alternative is to evacuate the appliance to the specified vacuum level.",
+      "why_others_are_wrong": {
+        "A": "This is below the required percentage for the stated conditions.",
+        "B": "This is below the required percentage for the stated conditions.",
+        "C": "Eighty percent applies in specified situations such as an inoperative compressor or older recovery equipment, not this scenario."
+      },
+      "source_url": "https://www.epa.gov/section608/stationary-refrigeration-service-practice-requirements",
+      "source_note": "EPA current small-appliance recovery percentages; page last updated July 6, 2026.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T2-001",
+      "exam": "epa-608",
+      "section": "type-ii",
+      "topic": "leak-detection",
+      "difficulty": "medium",
+      "risk_level": "standard",
+      "question": "Which observation can indicate a refrigerant leak in a high-pressure hermetic system?",
+      "choices": [
+        {"key": "A", "text": "Excessive superheat or traces of oil near a leak point"},
+        {"key": "B", "text": "A clean equipment nameplate"},
+        {"key": "C", "text": "Normal airflow across the condenser"},
+        {"key": "D", "text": "A properly secured electrical panel"}
+      ],
+      "correct_answer": "A",
+      "explanation": "EPA's Type II topics identify excessive superheat and traces of oil around hermetic systems as possible signs of refrigerant leakage.",
+      "why_others_are_wrong": {
+        "B": "Nameplate condition does not indicate refrigerant leakage.",
+        "C": "Normal airflow by itself is not evidence of a leak.",
+        "D": "The electrical-panel condition does not identify a refrigerant leak."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type II Leak Detection topics.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T2-002",
+      "exam": "epa-608",
+      "section": "type-ii",
+      "topic": "recovery-techniques",
+      "difficulty": "easy",
+      "risk_level": "standard",
+      "question": "What is an effective way to speed the recovery process on a high-pressure appliance?",
+      "choices": [
+        {"key": "A", "text": "Recover liquid refrigerant at the beginning of the process"},
+        {"key": "B", "text": "Use the longest and narrowest hoses available"},
+        {"key": "C", "text": "Mix refrigerants in the same recovery cylinder"},
+        {"key": "D", "text": "Add compressed air to the appliance"}
+      ],
+      "correct_answer": "A",
+      "explanation": "Removing liquid refrigerant first can substantially speed recovery because moving liquid removes a greater mass of refrigerant than recovering vapor alone.",
+      "why_others_are_wrong": {
+        "B": "Long, narrow hoses generally slow recovery by increasing flow resistance.",
+        "C": "Mixing refrigerants contaminates the recovered material and can make reclamation difficult or costly.",
+        "D": "Compressed air can introduce oxygen and moisture and must not be used this way."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type II Recovery Techniques topic: recover liquid at the beginning to speed recovery.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T2-003",
+      "exam": "epa-608",
+      "section": "type-ii",
+      "topic": "recovery-techniques",
+      "difficulty": "hard",
+      "risk_level": "standard",
+      "question": "After a high-pressure appliance reaches the required recovery vacuum, the technician isolates the equipment and waits. The pressure then rises. What is the most likely explanation?",
+      "choices": [
+        {"key": "A", "text": "The system has automatically completed dehydration"},
+        {"key": "B", "text": "Refrigerant remains as liquid or dissolved in the oil and is continuing to vaporize"},
+        {"key": "C", "text": "The recovery cylinder is definitely empty"},
+        {"key": "D", "text": "The pressure gauge must always be replaced"}
+      ],
+      "correct_answer": "B",
+      "explanation": "A pressure rebound after isolation can indicate that liquid refrigerant remains in the appliance or that refrigerant dissolved in oil is continuing to boil out. Recovery should continue as required.",
+      "why_others_are_wrong": {
+        "A": "Pressure rebound does not prove that dehydration is complete.",
+        "C": "Appliance pressure behavior does not establish that the recovery cylinder is empty.",
+        "D": "Gauge failure is possible in general, but pressure rebound is specifically associated with remaining refrigerant in this test topic."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type II Recovery Techniques topic: wait after reaching vacuum and observe pressure rise.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T2-004",
+      "exam": "epa-608",
+      "section": "type-ii",
+      "topic": "recovery-requirements",
+      "difficulty": "medium",
+      "risk_level": "high",
+      "question": "When is system-dependent recovery equipment prohibited based on the amount of refrigerant in the appliance?",
+      "choices": [
+        {"key": "A", "text": "When the appliance contains more than 5 pounds"},
+        {"key": "B", "text": "When the appliance contains more than 10 pounds"},
+        {"key": "C", "text": "When the appliance contains more than 15 pounds"},
+        {"key": "D", "text": "Only when the appliance contains more than 200 pounds"}
+      ],
+      "correct_answer": "C",
+      "explanation": "EPA's Type II test topics identify the prohibition on using system-dependent recovery equipment on appliances containing more than 15 pounds of refrigerant.",
+      "why_others_are_wrong": {
+        "A": "Five pounds is part of the small-appliance definition, not this Type II equipment limit.",
+        "B": "Ten pounds is not the stated limit for this prohibition.",
+        "D": "The prohibition applies well below 200 pounds."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type II Recovery Requirements topic: system-dependent equipment and the 15-pound limit.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T2-005",
+      "exam": "epa-608",
+      "section": "type-ii",
+      "topic": "pressure-temperature-relationships",
+      "difficulty": "medium",
+      "risk_level": "standard",
+      "question": "A gauge reads 20 psig. Approximately what is the corresponding absolute pressure at sea level?",
+      "choices": [
+        {"key": "A", "text": "5.3 psia"},
+        {"key": "B", "text": "20.0 psia"},
+        {"key": "C", "text": "34.7 psia"},
+        {"key": "D", "text": "294.0 psia"}
+      ],
+      "correct_answer": "C",
+      "explanation": "At sea level, approximate absolute pressure by adding atmospheric pressure, 14.7 psi, to gauge pressure: 20 psig + 14.7 = 34.7 psia.",
+      "why_others_are_wrong": {
+        "A": "This incorrectly subtracts atmospheric pressure.",
+        "B": "Gauge pressure and absolute pressure are not the same at sea level.",
+        "D": "This incorrectly multiplies the values."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type II Refrigeration topic: add 14.7 to convert psig to psia at standard atmospheric pressure.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T3-001",
+      "exam": "epa-608",
+      "section": "type-iii",
+      "topic": "leak-detection",
+      "difficulty": "medium",
+      "risk_level": "standard",
+      "question": "What operating condition can indicate that air is leaking into a low-pressure refrigeration system?",
+      "choices": [
+        {"key": "A", "text": "Excessive operation of the purge unit"},
+        {"key": "B", "text": "A clean condenser-water strainer"},
+        {"key": "C", "text": "Normal chilled-water flow"},
+        {"key": "D", "text": "A properly adjusted belt"}
+      ],
+      "correct_answer": "A",
+      "explanation": "Low-pressure systems can operate below atmospheric pressure, allowing air and other noncondensables to enter through leaks. Excessive purging can therefore be a sign of leakage into the system.",
+      "why_others_are_wrong": {
+        "B": "Strainer cleanliness does not by itself indicate air leakage.",
+        "C": "Normal water flow is not evidence of air entering the refrigerant circuit.",
+        "D": "Belt adjustment is unrelated to refrigerant-circuit leakage."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type III Leak Detection topic: excessive purging as a sign of leakage into a low-pressure system.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T3-002",
+      "exam": "epa-608",
+      "section": "type-iii",
+      "topic": "recovery-techniques",
+      "difficulty": "medium",
+      "risk_level": "high",
+      "question": "Before removing oil from a low-pressure appliance, to what temperature should the oil be heated to help minimize refrigerant release?",
+      "choices": [
+        {"key": "A", "text": "70°F"},
+        {"key": "B", "text": "100°F"},
+        {"key": "C", "text": "130°F"},
+        {"key": "D", "text": "212°F"}
+      ],
+      "correct_answer": "C",
+      "explanation": "EPA's Type III test topics identify heating the oil to 130°F before removal so that dissolved refrigerant is driven out and can be recovered, minimizing release during the oil change.",
+      "why_others_are_wrong": {
+        "A": "This is below the temperature identified in the EPA test topic.",
+        "B": "This is below the temperature identified in the EPA test topic.",
+        "D": "This is far above the temperature identified and could create additional safety concerns."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type III Recovery Techniques topic: heat oil to 130°F before removal.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T3-003",
+      "exam": "epa-608",
+      "section": "type-iii",
+      "topic": "recovery-techniques",
+      "difficulty": "hard",
+      "risk_level": "standard",
+      "question": "Why should water be circulated through, or removed from, a chiller while refrigerant is being evacuated?",
+      "choices": [
+        {"key": "A", "text": "To prevent the water from freezing as system pressure and refrigerant temperature fall"},
+        {"key": "B", "text": "To increase the ozone depletion potential of the refrigerant"},
+        {"key": "C", "text": "To convert the refrigerant into oxygen"},
+        {"key": "D", "text": "To eliminate the need for a recovery machine"}
+      ],
+      "correct_answer": "A",
+      "explanation": "Evacuation lowers system pressure and can lower refrigerant temperature enough to freeze water in the chiller tubes. Circulating or removing the water helps prevent freeze damage.",
+      "why_others_are_wrong": {
+        "B": "Water circulation does not change a refrigerant's ozone depletion potential.",
+        "C": "Refrigerant is not converted into oxygen.",
+        "D": "Water handling does not replace the need for required recovery equipment."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type III Recovery Techniques topic: circulate or remove water during evacuation to prevent freezing.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T3-004",
+      "exam": "epa-608",
+      "section": "type-iii",
+      "topic": "recharging-techniques",
+      "difficulty": "medium",
+      "risk_level": "standard",
+      "question": "When recharging an evacuated low-pressure centrifugal chiller, why is refrigerant vapor introduced before liquid refrigerant?",
+      "choices": [
+        {"key": "A", "text": "To raise system pressure and reduce the risk of water freezing in the tubes"},
+        {"key": "B", "text": "To intentionally vent noncondensables"},
+        {"key": "C", "text": "To avoid using the evaporator charging valve"},
+        {"key": "D", "text": "To make the refrigerant chemically stable"}
+      ],
+      "correct_answer": "A",
+      "explanation": "Introducing vapor first raises system pressure more gradually. Adding liquid refrigerant to a deep vacuum can cause rapid boiling and very low temperatures that may freeze water in the tubes.",
+      "why_others_are_wrong": {
+        "B": "The purpose is to prevent freezing, not to vent refrigerant or noncondensables.",
+        "C": "EPA's Type III topics identify charging centrifugals through the evaporator charging valve.",
+        "D": "The vapor-first procedure is about pressure and temperature control, not chemical stabilization."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type III Recharging Techniques topic: introduce vapor before liquid to prevent freezing.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    },
+    {
+      "id": "EPA608-T3-005",
+      "exam": "epa-608",
+      "section": "type-iii",
+      "topic": "low-pressure-refrigeration",
+      "difficulty": "easy",
+      "risk_level": "standard",
+      "question": "What is the primary purpose of a purge unit on a low-pressure refrigeration system?",
+      "choices": [
+        {"key": "A", "text": "Remove air and other noncondensable gases that enter the system"},
+        {"key": "B", "text": "Add oxygen to improve compressor efficiency"},
+        {"key": "C", "text": "Mix different refrigerants before recovery"},
+        {"key": "D", "text": "Increase the amount of water in the evaporator"}
+      ],
+      "correct_answer": "A",
+      "explanation": "Because portions of a low-pressure system can operate below atmospheric pressure, air and other noncondensables can leak into it. The purge unit removes these noncondensables while minimizing refrigerant loss.",
+      "why_others_are_wrong": {
+        "B": "Oxygen must not be deliberately added to the refrigerant circuit.",
+        "C": "Different refrigerants should not be mixed during recovery.",
+        "D": "The purge unit is not used to add water to the evaporator."
+      },
+      "source_url": "https://www.epa.gov/section608/test-topics",
+      "source_note": "EPA Type III Refrigeration topic: purpose of the purge unit in a low-pressure system.",
+      "review_status": "draft",
+      "needs_expert_review": true
+    }
+  ]
+}
