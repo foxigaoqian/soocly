@@ -9,10 +9,10 @@ export type PracticePageConfig = {
 
 export const practicePages: PracticePageConfig[] = [
   {
-    path: "/epa-608-practice-test",
-    eyebrow: "Free EPA 608 diagnostic",
-    title: "EPA 608 Practice Test",
-    description: "Answer 20 original practice questions across Core, Type I, Type II, and Type III. Review every answer with a clear technical explanation.",
+    path: "/",
+    eyebrow: "Free EPA 608 practice test",
+    title: "Free EPA 608 Practice Test 2026",
+    description: "Answer 20 original practice questions across Core, Type I, Type II, and Type III. Get your score immediately and review every answer with a clear technical explanation.",
     section: "all",
     coverage: ["Core regulations and safety", "Small appliances", "High-pressure systems", "Low-pressure systems"],
   },

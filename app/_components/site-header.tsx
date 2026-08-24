@@ -16,12 +16,12 @@ export function SiteHeader() {
           <span><strong>SOOCLY</strong><small>PREP</small></span>
         </Link>
         <nav aria-label="Primary navigation">
-          <Link href="/epa-608-practice-test">Practice tests</Link>
+          <Link href="/">Practice test</Link>
           <Link href="/epa-608-study-guide">Study guide</Link>
           <Link href="/editorial-policy">Question standards</Link>
           <Link href="/about">About</Link>
         </nav>
-        <Link className="header-action" href="/epa-608-practice-test">Start free test</Link>
+        <Link className="header-action" href="/">Start free test</Link>
       </div>
     </header>
   );

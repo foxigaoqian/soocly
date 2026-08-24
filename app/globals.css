@@ -78,6 +78,8 @@ button { font: inherit; }
 .trust-grid span { margin-top: 5px; color: var(--ink-500); font-size: 12px; }
 
 .home-section { padding-block: 72px; }
+.section-followup { margin: 24px 0 0; color: var(--ink-500); font-size: 14px; }
+.section-followup a { font-weight: 800; }
 .section-heading { display: grid; grid-template-columns: 1fr 420px; gap: 40px; align-items: end; margin-bottom: 28px; }
 .section-heading h2, .process-section h2, .standards-section h2 { margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.2; letter-spacing: -.02em; }
 .section-heading > p { margin: 0; color: var(--ink-500); }

@@ -9,7 +9,7 @@ export function SiteFooter() {
           <p className="footer-copy">Focused practice for skilled-trade certification exams.</p>
         </div>
         <div className="footer-links">
-          <Link href="/epa-608-practice-test">EPA 608 practice test</Link>
+          <Link href="/">EPA 608 practice test</Link>
           <Link href="/epa-608-study-guide">Study guide</Link>
           <Link href="/editorial-policy">Editorial policy</Link>
           <Link href="/about">About</Link>
