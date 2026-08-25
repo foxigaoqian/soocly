@@ -74,7 +74,7 @@ export function ResourcePage({ config }: { config: ResourcePageConfig }) {
           <p className="section-label">{config.eyebrow}</p>
           <h1>{config.title}</h1>
           <p>{config.intro}</p>
-          <div className="source-review-line"><strong>Source review:</strong> August 25, 2026 · U.S. EPA pages linked below</div>
+          <div className="source-review-line"><strong>Published by:</strong> Soocly Prep · <strong>Source review:</strong> August 25, 2026 · U.S. EPA pages linked below</div>
         </header>
 
         <dl className="resource-facts">

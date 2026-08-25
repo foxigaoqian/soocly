@@ -25,6 +25,13 @@ const topicGuides = [
   { href: "/how-to-get-epa-608-certified", label: "Certification steps", note: "Choose a level and find an EPA-approved test provider." },
 ];
 
+const candidateProblems = [
+  { title: "I pass practice questions but still feel unprepared", answer: "Do not memorize wording alone. Read the explanation, check the linked rule, then retry only the questions you missed.", href: "/epa-608-test-questions-and-answers", linkLabel: "Review explained answers" },
+  { title: "I do not know which section to study", answer: "Start with the mixed diagnostic. Its Core, Type I, Type II, and Type III breakdown shows where focused practice will help most.", href: "/epa-608-study-guide", linkLabel: "Compare the four sections" },
+  { title: "There are too many numbers and conditions", answer: "Study each value with its appliance type, charge, date, compressor condition, and pressure unit instead of treating it as an isolated number.", href: "/epa-608-evacuation-levels", linkLabel: "Review evacuation levels" },
+  { title: "I need to know whether I am ready for Universal", answer: "Use the 100-question simulation and judge every section separately. A strong total cannot hide a weak Core or Type section.", href: "/epa-608-universal-practice-test", linkLabel: "Take the Universal simulation" },
+];
+
 export function HomeSeoContent() {
   const faqJson = {
     "@context": "https://schema.org",
@@ -58,6 +65,24 @@ export function HomeSeoContent() {
           <li><span>03</span><div><strong>Practice the weakest section</strong><p>Use a focused 25-question Core, Type I, Type II, or Type III test.</p></div></li>
           <li><span>04</span><div><strong>Finish with Universal</strong><p>Take the <Link href="/epa-608-universal-practice-test">complete 100-question Universal simulation</Link> only after every section is consistently strong.</p></div></li>
         </ol>
+      </section>
+
+      <section className="pain-point-section">
+        <div className="container">
+          <div className="section-heading">
+            <div><p className="section-label">Common study problems</p><h2>Start with the problem that is slowing you down</h2></div>
+            <p>Use the test as a diagnostic tool, not a list of answers to memorize.</p>
+          </div>
+          <div className="pain-point-grid">
+            {candidateProblems.map((problem) => (
+              <article key={problem.title}>
+                <h3>{problem.title}</h3>
+                <p>{problem.answer}</p>
+                <Link href={problem.href}>{problem.linkLabel} <span aria-hidden="true">→</span></Link>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="topic-hub-section">

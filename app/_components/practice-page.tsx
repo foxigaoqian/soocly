@@ -80,7 +80,7 @@ export function PracticePage({ config }: { config: PracticePageConfig }) {
         </div>
         <aside className="review-notice">
           <h2>Source status</h2>
-          <p>100 original questions were checked against current EPA topic, certification, service-practice, and evacuation pages on August 25, 2026. Independent trade-expert review is the final pre-launch step.</p>
+          <p>Published by Soocly Prep. All 100 original questions were checked against linked EPA or eCFR sources on August 25, 2026. AI tools assisted with drafting and consistency checks. This release has not been independently reviewed by an HVAC trade expert, so we label it source-checked—not expert-reviewed.</p>
           <Link href="/editorial-policy">Read our question standards</Link>
         </aside>
       </section>
