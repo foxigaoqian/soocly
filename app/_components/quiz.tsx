@@ -146,7 +146,16 @@ export function Quiz({ questions, title, examMode = false }: QuizProps) {
           </div>
           <span className="question-topic">{currentQuestion.topic.replaceAll("-", " ")}</span>
         </div>
-        <div className="progress-track" aria-label={`${progress}% complete`}><span style={{ width: `${progress}%` }} /></div>
+        <div
+          className="progress-track"
+          role="progressbar"
+          aria-label="Test completion"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={progress}
+        >
+          <span style={{ width: `${progress}%` }} />
+        </div>
 
         <div className="question-body">
           <h2>{currentQuestion.question}</h2>
