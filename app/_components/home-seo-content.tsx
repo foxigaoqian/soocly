@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { serializeJsonLd } from "@/app/_lib/json-ld";
 
 const examSections = [
   { name: "Core", equipment: "Required foundation", focus: "Environmental effects, regulations, recovery terms, safety, cylinders, and shipping" },
@@ -32,7 +33,7 @@ export function HomeSeoContent() {
   };
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJson) }} />
       <section className="exam-structure-section">
         <div className="container">
           <p className="section-label">Know the exam</p>
@@ -55,7 +56,7 @@ export function HomeSeoContent() {
           <li><span>01</span><div><strong>Take the mixed diagnostic</strong><p>Answer five questions from each exam section without looking up the rules.</p></div></li>
           <li><span>02</span><div><strong>Read every explanation</strong><p>A lucky guess is not mastery. Follow the source link for values and regulatory conditions.</p></div></li>
           <li><span>03</span><div><strong>Practice the weakest section</strong><p>Use a focused 25-question Core, Type I, Type II, or Type III test.</p></div></li>
-          <li><span>04</span><div><strong>Finish with Universal</strong><p>Take the complete 100-question simulation only after every section is consistently strong.</p></div></li>
+          <li><span>04</span><div><strong>Finish with Universal</strong><p>Take the <Link href="/epa-608-universal-practice-test">complete 100-question Universal simulation</Link> only after every section is consistently strong.</p></div></li>
         </ol>
       </section>
 

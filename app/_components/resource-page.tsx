@@ -5,6 +5,7 @@ import { allQuestions, diagnosticQuestions, questionsForSection } from "@/data/q
 import { QuestionSamples } from "./question-samples";
 import { FlashcardDeck } from "./flashcard-deck";
 import { QuestionBankReview } from "./question-bank-review";
+import { serializeJsonLd } from "@/app/_lib/json-ld";
 
 const relatedLinks = [
   { href: "/", label: "Free EPA 608 practice test" },
@@ -12,6 +13,9 @@ const relatedLinks = [
   { href: "/epa-608-test-questions-and-answers", label: "Questions and answers" },
   { href: "/epa-608-exam-passing-score", label: "Passing score" },
   { href: "/epa-608-certification-online", label: "Online certification guide" },
+  { href: "/epa-608-universal-practice-test", label: "Universal practice test" },
+  { href: "/epa-608-exam-cost", label: "Exam cost guide" },
+  { href: "/epa-608-certification-card-replacement", label: "Replace a certification card" },
   { href: "/epa-608-recovery-requirements", label: "Recovery requirements" },
   { href: "/epa-608-evacuation-levels", label: "Evacuation levels" },
   { href: "/epa-608-refrigerant-types", label: "Refrigerant types" },
@@ -37,6 +41,19 @@ export function ResourcePage({ config }: { config: ResourcePageConfig }) {
       acceptedAnswer: { "@type": "Answer", text: faq.answer },
     })),
   };
+  const articleJson = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: config.title,
+    description: config.description,
+    url: `https://soocly.com${config.path}`,
+    mainEntityOfPage: `https://soocly.com${config.path}`,
+    datePublished: "2026-08-24",
+    dateModified: "2026-08-25",
+    author: { "@id": "https://soocly.com/#organization" },
+    publisher: { "@id": "https://soocly.com/#organization" },
+    inLanguage: "en-US",
+  };
   const questionPool = config.questionSection ? questionsForSection(config.questionSection) : allQuestions;
   const topicQuestions = config.questionTopics?.length
     ? questionPool.filter((question) => config.questionTopics?.includes(question.topic)).slice(0, 8)
@@ -44,8 +61,9 @@ export function ResourcePage({ config }: { config: ResourcePageConfig }) {
 
   return (
     <main id="main-content">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJson) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbJson) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJson) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJson) }} />
       <div className="page-strip">
         <div className="container breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span aria-hidden="true">/</span><span>{config.title}</span>

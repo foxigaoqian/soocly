@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/app/_lib/metadata";
 
-export const metadata: Metadata = { title: "Question Standards and Editorial Policy", description: "See how Soocly Prep writes, source-checks, reviews, updates, and corrects EPA 608 practice questions.", alternates: { canonical: "/editorial-policy" } };
+export const metadata = createPageMetadata({ title: "Question Standards and Editorial Policy", description: "See how Soocly Prep writes, source-checks, reviews, updates, and corrects EPA 608 practice questions.", path: "/editorial-policy" });
 
 export default function EditorialPolicyPage() {
   return (

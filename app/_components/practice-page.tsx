@@ -4,12 +4,14 @@ import type { PracticePageConfig } from "@/data/pages";
 import { Quiz } from "./quiz";
 import { QuestionSamples } from "./question-samples";
 import { HomeSeoContent } from "./home-seo-content";
+import { serializeJsonLd } from "@/app/_lib/json-ld";
 
 const sectionTests = [
   { href: "/epa-608-core-practice-test", label: "Core", title: "EPA 608 Core Practice Test", description: "Review regulations, refrigerant impacts, recovery terminology, and safety." },
   { href: "/epa-608-type-1-practice-test", label: "Type I", title: "EPA 608 Type I Practice Test", description: "Practice small-appliance definitions, fittings, and recovery requirements." },
   { href: "/epa-608-type-2-practice-test", label: "Type II", title: "EPA 608 Type II Practice Test", description: "Focus on high-pressure systems, leaks, pressures, and recovery procedures." },
   { href: "/epa-608-type-3-practice-test", label: "Type III", title: "EPA 608 Type III Practice Test", description: "Review low-pressure chillers, purge units, evacuation, and recharging." },
+  { href: "/epa-608-universal-practice-test", label: "Universal", title: "EPA 608 Universal Practice Test", description: "Finish with a 100-question simulation covering Core and all three Type sections." },
 ];
 
 export function PracticePage({ config }: { config: PracticePageConfig }) {
@@ -17,8 +19,38 @@ export function PracticePage({ config }: { config: PracticePageConfig }) {
   const sectionQuestions = questionsForSection(config.section);
   const questions = isHome ? diagnosticQuestions(5) : sectionQuestions.slice(0, config.questionLimit);
   const sampleQuestions = isHome ? diagnosticQuestions(2) : questions.slice(0, 6);
+  const pageUrl = `https://soocly.com${config.path === "/" ? "" : config.path}`;
+  const pageJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Quiz",
+        "@id": `${pageUrl}#quiz`,
+        name: config.title,
+        description: config.description,
+        url: pageUrl,
+        about: { "@type": "Thing", name: "EPA Section 608 Technician Certification" },
+        assesses: config.coverage.join(", "),
+        educationalLevel: "Professional certification preparation",
+        educationalUse: "Practice",
+        interactivityType: "active",
+        isAccessibleForFree: true,
+        inLanguage: "en-US",
+        provider: { "@id": "https://soocly.com/#organization" },
+        dateModified: "2026-08-25",
+      },
+      ...(isHome ? [] : [{
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://soocly.com" },
+          { "@type": "ListItem", position: 2, name: config.title, item: pageUrl },
+        ],
+      }]),
+    ],
+  };
   return (
     <main id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(pageJsonLd) }} />
       {!isHome && (
         <div className="page-strip">
           <div className="container breadcrumbs" aria-label="Breadcrumb">
@@ -77,6 +109,21 @@ export function PracticePage({ config }: { config: PracticePageConfig }) {
         </section>
       )}
       {isHome && <HomeSeoContent />}
+      {!isHome && (
+        <section className="container related-test-section" aria-labelledby="related-tests-heading">
+          <div className="section-heading">
+            <div><p className="section-label">Continue practicing</p><h2 id="related-tests-heading">Compare your score across every EPA 608 section</h2></div>
+            <p>Each technical area is scored separately. Move to another section or take the complete Universal simulation.</p>
+          </div>
+          <div className="related-test-grid">
+            {sectionTests.filter((test) => test.href !== config.path).map((test) => (
+              <Link href={test.href} key={test.href}>
+                <span>{test.label}</span><strong>{test.title}</strong><small>Start test →</small>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   );
 }

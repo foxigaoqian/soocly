@@ -315,6 +315,9 @@ button { font: inherit; }
 .study-sections a { font-size: 13px; font-weight: 800; }
 .study-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .article-callout { margin-top: 38px; padding: 20px; border-left: 4px solid var(--focus); background: #fff7e3; color: var(--ink-700); font-size: 13px; }
+.study-universal-callout { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-top: 28px; padding: 20px 22px; border: 1px solid var(--gray-300); border-left: 4px solid var(--blue-700); background: #fff; }
+.study-universal-callout p { margin: 5px 0 0; font-size: 13px; }
+.study-universal-callout > a { flex: 0 0 auto; font-size: 13px; font-weight: 800; }
 .policy-list section { display: grid; grid-template-columns: 50px 1fr; gap: 20px; padding-bottom: 25px; border-bottom: 1px solid var(--gray-300); }
 .policy-list section > span { color: var(--blue-700); font-size: 12px; font-weight: 800; }
 .policy-list p { margin-bottom: 0; }
@@ -326,6 +329,24 @@ button { font: inherit; }
 .footer-links { display: grid; grid-template-columns: repeat(2, auto); gap: 8px 26px; }
 .footer-links a { color: #d2dee7; font-size: 12px; }
 .legal-note { padding-block: 18px 26px; border-top: 1px solid #30485c; color: #8fa3b2; font-size: 11px; }
+
+.related-test-section { padding-block: 60px 76px; }
+.related-test-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; border: 1px solid var(--gray-300); background: var(--gray-300); }
+.related-test-grid > a { min-height: 150px; display: flex; flex-direction: column; padding: 20px; background: #fff; color: var(--ink-900); text-decoration: none; }
+.related-test-grid > a:hover { background: #f9fbfc; }
+.related-test-grid span { color: var(--green-700); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.related-test-grid strong { margin-top: 14px; font-size: 15px; line-height: 1.35; }
+.related-test-grid small { margin-top: auto; color: var(--blue-700); font-size: 12px; font-weight: 800; }
+
+.not-found-page { min-height: 62vh; display: grid; align-items: center; background: #eef2f5; }
+.not-found-layout { display: grid; grid-template-columns: 1.05fr .95fr; gap: 72px; align-items: center; padding-block: 72px; }
+.not-found-layout h1 { max-width: 680px; margin: 0; font-size: clamp(36px, 5vw, 60px); line-height: 1.08; letter-spacing: -.035em; }
+.not-found-layout > div > p:not(.section-label) { max-width: 620px; margin: 20px 0 28px; color: var(--ink-500); font-size: 17px; }
+.not-found-layout nav { border-top: 2px solid var(--navy-900); }
+.not-found-layout nav a { min-height: 86px; display: flex; flex-direction: column; justify-content: center; padding: 15px 18px; border-bottom: 1px solid var(--gray-300); background: #fff; text-decoration: none; }
+.not-found-layout nav a:hover { background: #f9fbfc; }
+.not-found-layout nav strong { color: var(--ink-900); font-size: 15px; }
+.not-found-layout nav span { margin-top: 4px; color: var(--blue-700); font-size: 12px; font-weight: 700; }
 
 @media (max-width: 900px) {
   .header-main { grid-template-columns: auto auto; gap: 18px; }
@@ -344,6 +365,8 @@ button { font: inherit; }
   .resource-sidebar { position: static; }
   .review-notice { max-width: 600px; }
   .practice-intro { grid-template-columns: 1fr; gap: 20px; }
+  .related-test-grid { grid-template-columns: repeat(2, 1fr); }
+  .not-found-layout { grid-template-columns: 1fr; gap: 36px; }
 }
 
 @media (max-width: 640px) {
@@ -365,6 +388,9 @@ button { font: inherit; }
   .home-answer-grid article:first-child, .resource-facts div:first-child { border-top: 0; }
   .exam-list-item { grid-template-columns: 1fr; gap: 8px; padding: 20px 16px; }
   .exam-list-item > a { margin-top: 5px; }
+  .study-universal-callout { align-items: flex-start; flex-direction: column; }
+  .related-test-grid { grid-template-columns: 1fr; }
+  .not-found-layout { padding-block: 48px; }
   .test-facts { width: 100%; grid-template-columns: repeat(3, 1fr); }
   .test-facts > div { min-width: 0; padding: 10px; }
   .test-facts dd { font-size: 11px; }

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { createPageMetadata } from "@/app/_lib/metadata";
 
-export const metadata: Metadata = { title: "About", description: "Learn why Soocly Prep is building focused, transparent practice tools for skilled-trade certification exams.", alternates: { canonical: "/about" } };
+export const metadata = createPageMetadata({ title: "About", openGraphTitle: "About Soocly Prep", description: "Learn why Soocly Prep is building focused, transparent practice tools for skilled-trade certification exams.", path: "/about" });
 
 export default function AboutPage() {
   return (
