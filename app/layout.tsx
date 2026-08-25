@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { SiteHeader } from "./_components/site-header";
 import { SiteFooter } from "./_components/site-footer";
 import { serializeJsonLd } from "./_lib/json-ld";
 import "./globals.css";
+
+/* eslint-disable @next/next/next-script-for-ga -- Search Console ownership verification requires the raw gtag snippet in head. */
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://soocly.com"),
@@ -56,18 +57,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   ];
   return (
     <html lang="en">
-      <body>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(siteJsonLd) }} />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-F4W4WME578"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F4W4WME578" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-F4W4WME578');`}
-        </Script>
+gtag('config', 'G-F4W4WME578');`,
+          }}
+        />
+      </head>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(siteJsonLd) }} />
         <SiteHeader />{children}<SiteFooter />
       </body>
     </html>
