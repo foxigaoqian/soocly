@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ResourcePageConfig } from "@/data/resources";
 import { officialSources } from "@/data/resources";
-import { diagnosticQuestions } from "@/data/questions";
+import { allQuestions, diagnosticQuestions, questionsForSection } from "@/data/questions";
 import { QuestionSamples } from "./question-samples";
 import { FlashcardDeck } from "./flashcard-deck";
 
@@ -11,6 +11,11 @@ const relatedLinks = [
   { href: "/epa-608-test-questions-and-answers", label: "Questions and answers" },
   { href: "/epa-608-exam-passing-score", label: "Passing score" },
   { href: "/epa-608-certification-online", label: "Online certification guide" },
+  { href: "/epa-608-recovery-requirements", label: "Recovery requirements" },
+  { href: "/epa-608-evacuation-levels", label: "Evacuation levels" },
+  { href: "/epa-608-refrigerant-types", label: "Refrigerant types" },
+  { href: "/recover-recycle-reclaim-refrigerant", label: "Recover, recycle, reclaim" },
+  { href: "/epa-608-leak-repair-requirements", label: "Leak repair requirements" },
 ];
 
 export function ResourcePage({ config }: { config: ResourcePageConfig }) {
@@ -22,10 +27,24 @@ export function ResourcePage({ config }: { config: ResourcePageConfig }) {
       { "@type": "ListItem", position: 2, name: config.title, item: `https://soocly.com${config.path}` },
     ],
   };
+  const faqJson = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: config.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+  const questionPool = config.questionSection ? questionsForSection(config.questionSection) : allQuestions;
+  const topicQuestions = config.questionTopics?.length
+    ? questionPool.filter((question) => config.questionTopics?.includes(question.topic)).slice(0, 8)
+    : config.questionSection ? questionPool.slice(0, 8) : diagnosticQuestions(5);
 
   return (
     <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJson) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson) }} />
       <div className="page-strip">
         <div className="container breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span aria-hidden="true">/</span><span>{config.title}</span>
@@ -54,7 +73,7 @@ export function ResourcePage({ config }: { config: ResourcePageConfig }) {
               </section>
             ))}
 
-            {config.showQuestionSamples && <QuestionSamples questions={diagnosticQuestions(5)} heading="20 EPA 608 questions with answers" />}
+            {config.showQuestionSamples && <QuestionSamples questions={topicQuestions} heading={`${topicQuestions.length} related EPA 608 questions with answers`} />}
             {config.showFlashcards && <FlashcardDeck />}
 
             <section className="faq-section">

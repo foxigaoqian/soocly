@@ -11,27 +11,37 @@ type QuizProps = {
   examMode?: boolean;
 };
 
+function shuffled(items: PracticeQuestion[]) {
+  const next = [...items];
+  for (let index = next.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [next[index], next[swapIndex]] = [next[swapIndex], next[index]];
+  }
+  return next;
+}
+
 export function Quiz({ questions, title, examMode = false }: QuizProps) {
+  const [activeQuestions, setActiveQuestions] = useState(questions);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [finished, setFinished] = useState(false);
-  const currentQuestion = questions[currentIndex];
+  const currentQuestion = activeQuestions[currentIndex];
   const selectedAnswer = answers[currentIndex];
   const answered = selectedAnswer !== undefined;
 
   const score = useMemo(
-    () => questions.reduce((total, question, index) => total + (answers[index] === question.correctAnswer ? 1 : 0), 0),
-    [answers, questions],
+    () => activeQuestions.reduce((total, question, index) => total + (answers[index] === question.correctAnswer ? 1 : 0), 0),
+    [activeQuestions, answers],
   );
 
   const sectionResults = useMemo(() => {
-    const sections = Array.from(new Set(questions.map((question) => question.section)));
+    const sections = Array.from(new Set(activeQuestions.map((question) => question.section)));
     return sections.map((section) => {
-      const matching = questions.map((question, index) => ({ question, index })).filter(({ question }) => question.section === section);
+      const matching = activeQuestions.map((question, index) => ({ question, index })).filter(({ question }) => question.section === section);
       const correct = matching.filter(({ question, index }) => answers[index] === question.correctAnswer).length;
       return { section, correct, total: matching.length };
     });
-  }, [answers, questions]);
+  }, [activeQuestions, answers]);
 
   function selectAnswer(key: string) {
     if (answered) return;
@@ -39,7 +49,7 @@ export function Quiz({ questions, title, examMode = false }: QuizProps) {
   }
 
   function nextQuestion() {
-    if (currentIndex === questions.length - 1) {
+    if (currentIndex === activeQuestions.length - 1) {
       setFinished(true);
       document.getElementById("practice-test")?.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
@@ -48,6 +58,17 @@ export function Quiz({ questions, title, examMode = false }: QuizProps) {
   }
 
   function restart() {
+    setActiveQuestions(shuffled(questions));
+    setAnswers({});
+    setCurrentIndex(0);
+    setFinished(false);
+    document.getElementById("practice-test")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function practiceMissed() {
+    const missed = activeQuestions.filter((question, index) => answers[index] !== question.correctAnswer);
+    if (!missed.length) return;
+    setActiveQuestions(missed);
     setAnswers({});
     setCurrentIndex(0);
     setFinished(false);
@@ -55,7 +76,7 @@ export function Quiz({ questions, title, examMode = false }: QuizProps) {
   }
 
   if (finished) {
-    const percent = Math.round((score / questions.length) * 100);
+    const percent = Math.round((score / activeQuestions.length) * 100);
     const passedEverySection = sectionResults.every((result) => result.correct >= Math.ceil(result.total * 0.7));
     return (
       <section className="results-panel" id="practice-test" aria-labelledby="results-heading">
@@ -66,7 +87,7 @@ export function Quiz({ questions, title, examMode = false }: QuizProps) {
           </div>
           <div className="score-box" aria-label={`${percent} percent`}>
             <strong>{percent}%</strong>
-            <span>{score} of {questions.length} correct</span>
+            <span>{score} of {activeQuestions.length} correct</span>
           </div>
         </div>
 
@@ -78,7 +99,7 @@ export function Quiz({ questions, title, examMode = false }: QuizProps) {
         {examMode && (
           <div className="exam-review">
             <h3>Review your answers</h3>
-            {questions.map((question, index) => {
+            {activeQuestions.map((question, index) => {
               const selected = answers[index];
               const correctChoice = question.choices.find((choice) => choice.key === question.correctAnswer);
               const selectedChoice = question.choices.find((choice) => choice.key === selected);
@@ -106,20 +127,21 @@ export function Quiz({ questions, title, examMode = false }: QuizProps) {
         </div>
 
         <div className="result-actions">
-          <button className="button button-primary" type="button" onClick={restart}>Retake this test</button>
+          <button className="button button-primary" type="button" onClick={restart}>Retake with a new order</button>
+          {score < activeQuestions.length && <button className="button button-secondary" type="button" onClick={practiceMissed}>Practice {activeQuestions.length - score} missed questions</button>}
           <Link className="button button-secondary" href="/epa-608-study-guide">Review the study guide</Link>
         </div>
       </section>
     );
   }
 
-  const progress = Math.round(((currentIndex + (answered ? 1 : 0)) / questions.length) * 100);
+  const progress = Math.round(((currentIndex + (answered ? 1 : 0)) / activeQuestions.length) * 100);
   return (
     <section className="quiz-layout" id="practice-test" aria-label={title}>
       <div className="quiz-main">
         <div className="quiz-toolbar">
           <div>
-            <span className="question-count">Question {currentIndex + 1} of {questions.length}</span>
+            <span className="question-count">Question {currentIndex + 1} of {activeQuestions.length}</span>
             <span className="question-section">{sectionNames[currentQuestion.section] ?? currentQuestion.section}</span>
           </div>
           <span className="question-topic">{currentQuestion.topic.replaceAll("-", " ")}</span>
@@ -158,22 +180,22 @@ export function Quiz({ questions, title, examMode = false }: QuizProps) {
               <p>{currentQuestion.explanation}</p>
               <div className="explanation-footer">
                 <a href={currentQuestion.sourceUrl} target="_blank" rel="noreferrer">Source: {currentQuestion.sourceLabel}</a>
-                <button className="button button-primary" type="button" onClick={nextQuestion}>{currentIndex === questions.length - 1 ? "View results" : "Next question"}</button>
+                <button className="button button-primary" type="button" onClick={nextQuestion}>{currentIndex === activeQuestions.length - 1 ? "View results" : "Next question"}</button>
               </div>
             </div>
           )}
-          {answered && examMode && <div className="exam-next"><p>Answer recorded. Explanations will appear after the final question.</p><button className="button button-primary" type="button" onClick={nextQuestion}>{currentIndex === questions.length - 1 ? "Score this exam" : "Next question"}</button></div>}
+          {answered && examMode && <div className="exam-next"><p>Answer recorded. Explanations will appear after the final question.</p><button className="button button-primary" type="button" onClick={nextQuestion}>{currentIndex === activeQuestions.length - 1 ? "Score this exam" : "Next question"}</button></div>}
         </div>
       </div>
 
       <aside className="quiz-sidebar" aria-label="Test progress">
         <h2>Test progress</h2>
         <dl className="progress-summary">
-          <div><dt>Answered</dt><dd>{Object.keys(answers).length}/{questions.length}</dd></div>
+          <div><dt>Answered</dt><dd>{Object.keys(answers).length}/{activeQuestions.length}</dd></div>
           <div><dt>{examMode ? "Score" : "Correct"}</dt><dd>{examMode ? "Hidden" : score}</dd></div>
         </dl>
         <ol className="question-map" aria-label="Question status">
-          {questions.map((question, index) => {
+          {activeQuestions.map((question, index) => {
             const isAnswered = answers[index] !== undefined;
             const isCurrent = index === currentIndex;
             return <li key={question.id} className={`${isAnswered ? "is-answered" : ""} ${isCurrent ? "is-current" : ""}`} aria-label={`Question ${index + 1}${isAnswered ? ", answered" : ""}${isCurrent ? ", current" : ""}`}>{index + 1}</li>;

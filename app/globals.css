@@ -261,6 +261,14 @@ button { font: inherit; }
 .study-method-section li > span { color: var(--green-700); font-size: 12px; font-weight: 800; }
 .study-method-section li strong { font-size: 15px; }
 .study-method-section li p { margin: 4px 0 0; color: var(--ink-500); font-size: 13px; }
+.topic-hub-section { padding-block: 72px; background: #eef2f5; border-block: 1px solid var(--gray-300); }
+.topic-hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--gray-300); background: var(--gray-300); }
+.topic-hub-grid > a { min-height: 205px; display: flex; flex-direction: column; padding: 24px; background: #fff; color: var(--ink-900); text-decoration: none; }
+.topic-hub-grid > a:hover { background: #f9fbfc; }
+.topic-hub-grid > a > span { color: var(--green-700); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+.topic-hub-grid strong { margin-top: 24px; font-size: 17px; }
+.topic-hub-grid p { margin: 7px 0 18px; color: var(--ink-500); font-size: 13px; }
+.topic-hub-grid small { margin-top: auto; color: var(--blue-700); font-size: 12px; font-weight: 800; }
 .faq-home-section { padding-block: 72px; background: #fff; border-top: 1px solid var(--gray-300); }
 .faq-home-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 80px; }
 .faq-home-grid > div:first-child > p:not(.section-label) { color: var(--ink-500); }
@@ -288,6 +296,7 @@ button { font: inherit; }
 .study-sections h2 { font-size: 19px; }
 .study-sections p { margin: 5px 0 8px; }
 .study-sections a { font-size: 13px; font-weight: 800; }
+.study-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .article-callout { margin-top: 38px; padding: 20px; border-left: 4px solid var(--focus); background: #fff7e3; color: var(--ink-700); font-size: 13px; }
 .policy-list section { display: grid; grid-template-columns: 50px 1fr; gap: 20px; padding-bottom: 25px; border-bottom: 1px solid var(--gray-300); }
 .policy-list section > span { color: var(--blue-700); font-size: 12px; font-weight: 800; }
@@ -310,6 +319,7 @@ button { font: inherit; }
   .hero-grid { padding-block: 54px; }
   .exam-summary { max-width: 520px; }
   .section-heading, .standards-section, .study-method-section, .faq-home-grid { grid-template-columns: 1fr; gap: 32px; }
+  .topic-hub-grid { grid-template-columns: repeat(2, 1fr); }
   .quiz-layout { grid-template-columns: 1fr; }
   .quiz-sidebar { position: static; }
   .content-section { grid-template-columns: 1fr; gap: 32px; }
@@ -363,6 +373,7 @@ button { font: inherit; }
   .exam-structure-row { grid-template-columns: 78px 1fr; }
   .exam-structure-row > *:last-child { grid-column: 1 / -1; border-top: 1px solid var(--gray-200); border-left: 0; }
   .flashcard-grid { grid-template-columns: 1fr; }
+  .topic-hub-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

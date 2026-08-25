@@ -35,7 +35,7 @@ export function PracticePage({ config }: { config: PracticePageConfig }) {
         <dl className="test-facts">
           <div><dt>Questions</dt><dd>{questions.length}</dd></div>
           <div><dt>Format</dt><dd>Multiple choice</dd></div>
-          <div><dt>Feedback</dt><dd>Immediate</dd></div>
+          <div><dt>Feedback</dt><dd>{config.examMode ? "After scoring" : "Immediate"}</dd></div>
         </dl>
       </section>
       <div className="container"><Quiz questions={questions} title={config.title} examMode={config.examMode} /></div>

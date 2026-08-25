@@ -15,9 +15,24 @@ const faqs = [
   { question: "Can I get certified by finishing this test?", answer: "No. This is preparation only. Certification requires an EPA-approved test administered by an approved organization." },
 ];
 
+const topicGuides = [
+  { href: "/epa-608-recovery-requirements", label: "Recovery requirements", note: "Choose the correct rule by appliance, charge, date, and compressor condition." },
+  { href: "/epa-608-evacuation-levels", label: "Evacuation levels", note: "Read vacuum units and the current EPA table without mixing conditions." },
+  { href: "/epa-608-refrigerant-types", label: "Refrigerant types", note: "Review CFC, HCFC, HFC, ozone impact, and blend fractionation." },
+  { href: "/recover-recycle-reclaim-refrigerant", label: "Recover, recycle, reclaim", note: "Separate the three definitions and ownership rules." },
+  { href: "/epa-608-leak-repair-requirements", label: "Leak repair", note: "Connect detection, calculated leak rate, verification, and records." },
+  { href: "/how-to-get-epa-608-certified", label: "Certification steps", note: "Choose a level and find an EPA-approved test provider." },
+];
+
 export function HomeSeoContent() {
+  const faqJson = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })),
+  };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson) }} />
       <section className="exam-structure-section">
         <div className="container">
           <p className="section-label">Know the exam</p>
@@ -27,7 +42,7 @@ export function HomeSeoContent() {
             <div className="exam-structure-row is-heading" role="row"><span role="columnheader">Section</span><span role="columnheader">Equipment</span><span role="columnheader">Study focus</span></div>
             {examSections.map((section) => <div className="exam-structure-row" role="row" key={section.name}><strong role="cell">{section.name}</strong><span role="cell">{section.equipment}</span><span role="cell">{section.focus}</span></div>)}
           </div>
-          <p className="structure-note">The EPA requires the appropriate technician certification for work that could release regulated refrigerant from covered stationary equipment. Official tests are administered by <a href="https://www.epa.gov/section608/certification-programs-section-608-technicians" target="_blank" rel="noreferrer">EPA-approved certification programs</a>.</p>
+          <p className="structure-note">Appendix D sets a 70% passing score for closed-book Type I, Type II, Type III, and Universal tests. Each relevant group contains 25 questions, and Universal contains 100. Official tests are administered by <a href="https://www.epa.gov/section608/certification-programs-section-608-technicians" target="_blank" rel="noreferrer">EPA-approved certification programs</a>. <Link href="/epa-608-exam-passing-score">See the complete score breakdown</Link>.</p>
         </div>
       </section>
 
@@ -44,6 +59,25 @@ export function HomeSeoContent() {
         </ol>
       </section>
 
+      <section className="topic-hub-section">
+        <div className="container">
+          <div className="section-heading">
+            <div><p className="section-label">Topic review</p><h2>Build the knowledge behind the answers</h2></div>
+            <p>Use these focused guides when a practice result shows a repeat weakness.</p>
+          </div>
+          <div className="topic-hub-grid">
+            {topicGuides.map((guide, index) => (
+              <Link href={guide.href} key={guide.href}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{guide.label}</strong>
+                <p>{guide.note}</p>
+                <small>Read guide →</small>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="faq-home-section">
         <div className="container faq-home-grid">
           <div><p className="section-label">Before you begin</p><h2>EPA 608 practice test FAQ</h2><p>Clear answers about what this test covers and what still requires an approved certification provider.</p><Link href="/epa-608-study-guide">Read the complete study guide →</Link></div>
@@ -55,4 +89,3 @@ export function HomeSeoContent() {
     </>
   );
 }
-
