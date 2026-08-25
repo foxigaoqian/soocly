@@ -22,7 +22,21 @@ export function SiteHeader() {
           <Link href="/editorial-policy">Question standards</Link>
           <Link href="/about">About</Link>
         </nav>
-        <Link className="header-action" href="/">Start free test</Link>
+        <div className="header-actions">
+          <a
+            className="support-action"
+            href="https://ko-fi.com/sooclyprep"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Support Soocly Prep on Ko-fi (opens in a new tab)"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+              <path d="M12 20.3 10.6 19C5.4 14.3 2 11.2 2 7.4 2 4.3 4.4 2 7.5 2c1.7 0 3.4.8 4.5 2.1A6 6 0 0 1 16.5 2C19.6 2 22 4.3 22 7.4c0 3.8-3.4 6.9-8.6 11.6L12 20.3Z" />
+            </svg>
+            <span>Support us</span>
+          </a>
+          <Link className="header-action" href="/">Start free test</Link>
+        </div>
       </div>
     </header>
   );
