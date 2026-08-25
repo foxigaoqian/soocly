@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { practicePages } from "@/data/pages";
 import { resourcePages } from "@/data/resources";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [...new Set([...practicePages.map((page) => page.path), ...Object.values(resourcePages).map((page) => page.path), "/epa-608-study-guide", "/about", "/editorial-policy"])];
   return paths.map((path) => ({

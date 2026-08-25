@@ -5,17 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "build:worker": "opennextjs-cloudflare build",
-    "build:kv": "node scripts/build-static-kv.mjs",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "preview": "npm run build && wrangler dev",
+    "deploy:dry": "npm run build && wrangler deploy --dry-run",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "1.20.2",
     "next": "16.3.2",
     "react": "19.2.8",
     "react-dom": "19.2.8"
