@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   category: "education",
   creator: "Soocly Prep",
   publisher: "Soocly Prep",
-  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     siteName: "Soocly Prep",

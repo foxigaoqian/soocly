@@ -5,7 +5,6 @@ export const metadata: Metadata = {
   title: "Page Not Found",
   description: "The requested Soocly Prep page could not be found.",
   alternates: { canonical: null },
-  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {
