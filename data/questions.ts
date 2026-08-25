@@ -1,39 +1,17 @@
-import seed from "./questions.json";
-
-export type QuestionChoice = {
-  key: string;
-  text: string;
-};
-
-export type PracticeQuestion = {
-  id: string;
-  section: string;
-  topic: string;
-  difficulty: string;
-  question: string;
-  choices: QuestionChoice[];
-  correctAnswer: string;
-  explanation: string;
-  sourceUrl: string;
-  reviewStatus: string;
-};
-
-export const allQuestions: PracticeQuestion[] = seed.questions.map((question) => ({
-  id: question.id,
-  section: question.section,
-  topic: question.topic,
-  difficulty: question.difficulty,
-  question: question.question,
-  choices: question.choices,
-  correctAnswer: question.correct_answer,
-  explanation: question.explanation,
-  sourceUrl: question.source_url,
-  reviewStatus: question.review_status,
-}));
+import { allQuestions } from "./question-bank";
+import type { PracticeQuestion } from "./question-bank";
+export { allQuestions } from "./question-bank";
+export type { PracticeQuestion, QuestionChoice } from "./question-bank";
 
 export function questionsForSection(section?: string): PracticeQuestion[] {
   if (!section || section === "all") return allQuestions;
   return allQuestions.filter((question) => question.section === section);
+}
+
+export function diagnosticQuestions(perSection = 5): PracticeQuestion[] {
+  return ["core", "type-i", "type-ii", "type-iii"].flatMap((section) =>
+    allQuestions.filter((question) => question.section === section).slice(0, perSection),
+  );
 }
 
 export const sectionNames: Record<string, string> = {

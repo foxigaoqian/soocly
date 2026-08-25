@@ -6,11 +6,15 @@ export function SiteFooter() {
       <div className="container footer-grid">
         <div>
           <p className="footer-brand">SOOCLY PREP</p>
-          <p className="footer-copy">Focused practice for skilled-trade certification exams.</p>
+          <p className="footer-copy">Source-checked practice for skilled-trade certification exams.</p>
         </div>
         <div className="footer-links">
           <Link href="/">EPA 608 practice test</Link>
           <Link href="/epa-608-study-guide">Study guide</Link>
+          <Link href="/epa-608-test-questions-and-answers">Questions &amp; answers</Link>
+          <Link href="/epa-608-flashcards">Flashcards</Link>
+          <Link href="/epa-608-exam-passing-score">Passing score</Link>
+          <Link href="/epa-608-certification-online">Online exam guide</Link>
           <Link href="/editorial-policy">Editorial policy</Link>
           <Link href="/about">About</Link>
         </div>

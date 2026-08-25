@@ -7,7 +7,7 @@ export function SiteHeader() {
       <div className="utility-bar">
         <div className="container utility-inner">
           <span>Independent trade exam preparation</span>
-          <span>Content reviewed before publication</span>
+          <span>100 original questions · Sources checked August 2026</span>
         </div>
       </div>
       <div className="container header-main">
@@ -18,6 +18,7 @@ export function SiteHeader() {
         <nav aria-label="Primary navigation">
           <Link href="/">Practice test</Link>
           <Link href="/epa-608-study-guide">Study guide</Link>
+          <Link href="/epa-608-test-questions-and-answers">Q&amp;A</Link>
           <Link href="/editorial-policy">Question standards</Link>
           <Link href="/about">About</Link>
         </nav>

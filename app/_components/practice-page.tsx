@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { questionsForSection } from "@/data/questions";
+import { diagnosticQuestions, questionsForSection } from "@/data/questions";
 import type { PracticePageConfig } from "@/data/pages";
 import { Quiz } from "./quiz";
+import { QuestionSamples } from "./question-samples";
+import { HomeSeoContent } from "./home-seo-content";
 
 const sectionTests = [
   { href: "/epa-608-core-practice-test", label: "Core", title: "EPA 608 Core Practice Test", description: "Review regulations, refrigerant impacts, recovery terminology, and safety." },
@@ -11,8 +13,10 @@ const sectionTests = [
 ];
 
 export function PracticePage({ config }: { config: PracticePageConfig }) {
-  const questions = questionsForSection(config.section);
   const isHome = config.path === "/";
+  const sectionQuestions = questionsForSection(config.section);
+  const questions = isHome ? diagnosticQuestions(5) : sectionQuestions.slice(0, config.questionLimit);
+  const sampleQuestions = isHome ? diagnosticQuestions(2) : questions.slice(0, 6);
   return (
     <main id="main-content">
       {!isHome && (
@@ -34,20 +38,21 @@ export function PracticePage({ config }: { config: PracticePageConfig }) {
           <div><dt>Feedback</dt><dd>Immediate</dd></div>
         </dl>
       </section>
-      <div className="container"><Quiz questions={questions} title={config.title} /></div>
+      <div className="container"><Quiz questions={questions} title={config.title} examMode={config.examMode} /></div>
       <section className="container content-section">
         <div className="content-main">
           <p className="section-label">What this test covers</p>
           <h2>Focused practice, organized by exam objective</h2>
-          <p>These original questions are written to reinforce the published EPA Section 608 topic areas. They are not copied official exam questions and should be used alongside current training material.</p>
+          <p>These original questions follow the EPA&apos;s published Section 608 topic outline. Each explanation links to the primary EPA page used for source checking. They are not copied official exam questions.</p>
           <ul className="coverage-list">{config.coverage.map((item) => <li key={item}>{item}</li>)}</ul>
         </div>
         <aside className="review-notice">
-          <h2>Question status</h2>
-          <p>This launch set remains marked as draft until reviewed by a qualified EPA 608 professional. Numeric and regulatory questions receive priority review.</p>
+          <h2>Source status</h2>
+          <p>100 original questions were checked against current EPA topic, certification, service-practice, and evacuation pages on August 25, 2026. Independent trade-expert review is the final pre-launch step.</p>
           <Link href="/editorial-policy">Read our question standards</Link>
         </aside>
       </section>
+      <div className="container"><QuestionSamples questions={sampleQuestions} heading={isHome ? "Free EPA 608 sample questions and answers" : `${config.title} sample questions`} /></div>
       {isHome && (
         <section className="container home-section">
           <div className="section-heading">
@@ -64,8 +69,14 @@ export function PracticePage({ config }: { config: PracticePageConfig }) {
             ))}
           </div>
           <p className="section-followup">New to the certification structure? <Link href="/epa-608-study-guide">Read the EPA 608 study guide</Link>.</p>
+          <div className="home-answer-grid">
+            <article><span>100</span><h3>Source-checked questions</h3><p>Twenty-five questions for each exam section, with explanations and primary EPA links.</p></article>
+            <article><span>4</span><h3>Section scores</h3><p>See Core, Type I, Type II, and Type III performance separately after the diagnostic.</p></article>
+            <article><span>0</span><h3>Signup required</h3><p>Start the diagnostic and review every answer without creating an account.</p></article>
+          </div>
         </section>
       )}
+      {isHome && <HomeSeoContent />}
     </main>
   );
 }

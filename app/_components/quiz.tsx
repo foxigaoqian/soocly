@@ -8,9 +8,10 @@ import { sectionNames } from "@/data/questions";
 type QuizProps = {
   questions: PracticeQuestion[];
   title: string;
+  examMode?: boolean;
 };
 
-export function Quiz({ questions, title }: QuizProps) {
+export function Quiz({ questions, title, examMode = false }: QuizProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [finished, setFinished] = useState(false);
@@ -55,6 +56,7 @@ export function Quiz({ questions, title }: QuizProps) {
 
   if (finished) {
     const percent = Math.round((score / questions.length) * 100);
+    const passedEverySection = sectionResults.every((result) => result.correct >= Math.ceil(result.total * 0.7));
     return (
       <section className="results-panel" id="practice-test" aria-labelledby="results-heading">
         <div className="results-heading-row">
@@ -69,9 +71,26 @@ export function Quiz({ questions, title }: QuizProps) {
         </div>
 
         <div className="result-status" role="status">
-          <strong>{percent >= 80 ? "Good foundation" : percent >= 70 ? "Close, but review is recommended" : "Focused review recommended"}</strong>
-          <p>This diagnostic is a study aid, not a prediction or guarantee of your official exam result.</p>
+          <strong>{examMode ? (passedEverySection ? "Practice threshold reached in every section" : "One or more sections need review") : percent >= 80 ? "Good foundation" : percent >= 70 ? "Close, but review is recommended" : "Focused review recommended"}</strong>
+          <p>{examMode ? "Universal preparation must be evaluated section by section. This simulation is not an official score or pass guarantee." : "This diagnostic is a study aid, not a prediction or guarantee of your official exam result."}</p>
         </div>
+
+        {examMode && (
+          <div className="exam-review">
+            <h3>Review your answers</h3>
+            {questions.map((question, index) => {
+              const selected = answers[index];
+              const correctChoice = question.choices.find((choice) => choice.key === question.correctAnswer);
+              const selectedChoice = question.choices.find((choice) => choice.key === selected);
+              return (
+                <details key={question.id}>
+                  <summary><span>{index + 1}</span><strong>{selected === question.correctAnswer ? "Correct" : "Review"}</strong>{question.question}</summary>
+                  <div><p><strong>Your answer:</strong> {selected}. {selectedChoice?.text}</p><p><strong>Correct answer:</strong> {question.correctAnswer}. {correctChoice?.text}</p><p>{question.explanation}</p><a href={question.sourceUrl} target="_blank" rel="noreferrer">Source: {question.sourceLabel}</a></div>
+                </details>
+              );
+            })}
+          </div>
+        )}
 
         <div className="result-table-wrap">
           <table className="result-table">
@@ -113,7 +132,7 @@ export function Quiz({ questions, title }: QuizProps) {
             {currentQuestion.choices.map((choice) => {
               const selected = selectedAnswer === choice.key;
               const correct = choice.key === currentQuestion.correctAnswer;
-              const state = answered && correct ? "answer-correct" : answered && selected ? "answer-incorrect" : answered ? "answer-muted" : "";
+              const state = examMode && answered ? (selected ? "answer-selected" : "answer-muted") : answered && correct ? "answer-correct" : answered && selected ? "answer-incorrect" : answered ? "answer-muted" : "";
               return (
                 <button
                   className={`answer-row ${state}`}
@@ -126,23 +145,24 @@ export function Quiz({ questions, title }: QuizProps) {
                 >
                   <span className="answer-key">{choice.key}</span>
                   <span className="answer-text">{choice.text}</span>
-                  {answered && correct && <span className="answer-state">Correct</span>}
-                  {answered && selected && !correct && <span className="answer-state">Your answer</span>}
+                  {answered && !examMode && correct && <span className="answer-state">Correct</span>}
+                  {answered && selected && (!correct || examMode) && <span className="answer-state">Your answer</span>}
                 </button>
               );
             })}
           </div>
 
-          {answered && (
+          {answered && !examMode && (
             <div className={`explanation ${selectedAnswer === currentQuestion.correctAnswer ? "is-correct" : "is-incorrect"}`} aria-live="polite">
               <h3>{selectedAnswer === currentQuestion.correctAnswer ? "Correct answer" : `Correct answer: ${currentQuestion.correctAnswer}`}</h3>
               <p>{currentQuestion.explanation}</p>
               <div className="explanation-footer">
-                <a href={currentQuestion.sourceUrl} target="_blank" rel="noreferrer">View supporting EPA topic</a>
+                <a href={currentQuestion.sourceUrl} target="_blank" rel="noreferrer">Source: {currentQuestion.sourceLabel}</a>
                 <button className="button button-primary" type="button" onClick={nextQuestion}>{currentIndex === questions.length - 1 ? "View results" : "Next question"}</button>
               </div>
             </div>
           )}
+          {answered && examMode && <div className="exam-next"><p>Answer recorded. Explanations will appear after the final question.</p><button className="button button-primary" type="button" onClick={nextQuestion}>{currentIndex === questions.length - 1 ? "Score this exam" : "Next question"}</button></div>}
         </div>
       </div>
 
@@ -150,7 +170,7 @@ export function Quiz({ questions, title }: QuizProps) {
         <h2>Test progress</h2>
         <dl className="progress-summary">
           <div><dt>Answered</dt><dd>{Object.keys(answers).length}/{questions.length}</dd></div>
-          <div><dt>Correct</dt><dd>{score}</dd></div>
+          <div><dt>{examMode ? "Score" : "Correct"}</dt><dd>{examMode ? "Hidden" : score}</dd></div>
         </dl>
         <ol className="question-map" aria-label="Question status">
           {questions.map((question, index) => {
@@ -160,8 +180,8 @@ export function Quiz({ questions, title }: QuizProps) {
           })}
         </ol>
         <div className="sidebar-note">
-          <strong>Practice mode</strong>
-          <p>Answers lock after selection. Explanations appear immediately.</p>
+          <strong>{examMode ? "Exam mode" : "Practice mode"}</strong>
+          <p>{examMode ? "Answers lock after selection. Explanations appear after scoring." : "Answers lock after selection. Explanations appear immediately."}</p>
         </div>
       </aside>
     </section>
