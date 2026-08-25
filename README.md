@@ -1,6 +1,13 @@
 # Soocly Prep
 
-Soocly Prep is a trade certification practice platform. The first exam is EPA Section 608.
+[Soocly Prep](https://soocly.com/) is a free trade-certification practice platform. The first exam track covers EPA Section 608, with section-specific practice tests, study guides, flashcards, and reference pages for HVAC students and technicians.
+
+## Live resources
+
+- [Free EPA 608 practice test](https://soocly.com/)
+- [EPA 608 study guide](https://soocly.com/epa-608-study-guide)
+- [EPA 608 test questions and answers](https://soocly.com/epa-608-test-questions-and-answers)
+- [EPA 608 Universal practice test](https://soocly.com/epa-608-universal-practice-test)
 
 ## Stack
 
