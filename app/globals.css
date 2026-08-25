@@ -265,7 +265,7 @@ button { font: inherit; }
 .resource-body .question-samples { margin-bottom: 0; }
 .exam-structure-section { padding-block: 72px; background: #eef2f5; border-block: 1px solid var(--gray-300); }
 .exam-structure-section h2, .study-method-section h2, .faq-home-section h2 { margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.2; }
-.section-lead { max-width: 760px; color: var(--ink-500); }
+.section-lead { max-width: 760px; color: var(--ink-700); }
 .exam-structure-table { margin-top: 28px; border-top: 2px solid var(--navy-900); background: #fff; }
 .exam-structure-row { display: grid; grid-template-columns: 110px 220px 1fr; border-bottom: 1px solid var(--gray-300); }
 .exam-structure-row > * { padding: 16px 18px; border-left: 1px solid var(--gray-200); font-size: 13px; }
