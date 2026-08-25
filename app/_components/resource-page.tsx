@@ -4,6 +4,7 @@ import { officialSources } from "@/data/resources";
 import { allQuestions, diagnosticQuestions, questionsForSection } from "@/data/questions";
 import { QuestionSamples } from "./question-samples";
 import { FlashcardDeck } from "./flashcard-deck";
+import { QuestionBankReview } from "./question-bank-review";
 
 const relatedLinks = [
   { href: "/", label: "Free EPA 608 practice test" },
@@ -74,6 +75,7 @@ export function ResourcePage({ config }: { config: ResourcePageConfig }) {
             ))}
 
             {config.showQuestionSamples && <QuestionSamples questions={topicQuestions} heading={`${topicQuestions.length} related EPA 608 questions with answers`} />}
+            {config.showFullQuestionBank && <QuestionBankReview questions={allQuestions} />}
             {config.showFlashcards && <FlashcardDeck />}
 
             <section className="faq-section">

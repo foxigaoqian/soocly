@@ -88,6 +88,7 @@ export type ResourcePageConfig = {
   faqs: ResourceFaq[];
   sources: (keyof typeof officialSources)[];
   showQuestionSamples?: boolean;
+  showFullQuestionBank?: boolean;
   showFlashcards?: boolean;
   questionSection?: "core" | "type-i" | "type-ii" | "type-iii";
   questionTopics?: string[];
@@ -127,7 +128,7 @@ export const resourcePages: Record<string, ResourcePageConfig> = {
       { question: "Which section should I study first?", answer: "Start with Core because every certification path requires the Core material. Then add Type I, Type II, or Type III for the equipment you expect to service." },
     ],
     sources: ["topics", "certification", "definitions", "service", "evacuation"],
-    showQuestionSamples: true,
+    showFullQuestionBank: true,
   },
   score: {
     path: "/epa-608-exam-passing-score",
